@@ -12,6 +12,7 @@ app.use('/api/location/ufs', require('./routes/ufs'));
 app.use('/api/location/cidades', require('./routes/cidades'));
 app.use('/api/users', require('./routes/users')); // 🔑 Adicionada a rota de usuários
 app.use('/api/login', require('./routes/login'));
+app.use('/api/redefsenha', require('./routes/redefsenha'));
 
 // Teste de rota raiz
 app.get('/', (req, res) => {
