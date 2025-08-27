@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Chave secreta do JWT (ideal usar variável de ambiente)
+const JWT_SECRET = process.env.JWT_SECRET || 'sua_chave_super_secreta';
 
 // Login
 router.post('/', async (req, res) => {
@@ -19,7 +23,18 @@ router.post('/', async (req, res) => {
         const match = await bcrypt.compare(senha, user.senha);
         if (!match) return res.status(401).json({ message: 'Senha incorreta' });
 
-        res.json({ message: 'Login realizado com sucesso', user: { id: user.id, email: user.email } });
+        // Gera token JWT válido por 1h
+        const token = jwt.sign(
+            { id: user.id, email: user.email },
+            JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.json({
+            message: 'Login realizado com sucesso',
+            token,
+            user: { id: user.id, email: user.email }
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Erro ao realizar login' });
