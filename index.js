@@ -10,11 +10,11 @@ app.use(express.json());
 // Rotas
 app.use('/api/location/ufs', require('./routes/ufs'));
 app.use('/api/location/cidades', require('./routes/cidades'));
-app.use('/api/users', require('./routes/users')); // 🔑 Adicionada a rota de usuários
+app.use('/api/users', require('./routes/users')); 
 app.use('/api/login', require('./routes/login'));
 app.use('/api/redefsenha', require('./routes/redefsenha'));
 app.use('/api/users', require('./routes/users'));
-
+app.use('/api/sensor', require('./routes/sensor'));
 
 // Teste de rota raiz
 app.get('/', (req, res) => {
@@ -22,5 +22,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em: ${PORT}`  );
 });
