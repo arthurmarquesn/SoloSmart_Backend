@@ -18,31 +18,6 @@ CREATE SCHEMA IF NOT EXISTS `solosmart` DEFAULT CHARACTER SET utf8mb4 COLLATE ut
 USE `solosmart` ;
 
 -- -----------------------------------------------------
--- Table `solosmart`.`cidades`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `solosmart`.`cidades` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `uf` VARCHAR(2) NULL DEFAULT NULL,
-  `nome` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 136
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `solosmart`.`ufs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `solosmart`.`ufs` (
-  `sigla` CHAR(2) NOT NULL,
-  PRIMARY KEY (`sigla`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
 -- Table `solosmart`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `solosmart`.`users` (
